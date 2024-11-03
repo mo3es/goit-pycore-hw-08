@@ -121,7 +121,6 @@ def load_data(phonebook_path="addressbook.pkl"):
     try:
         with open(phonebook_path, "rb") as f:
             data = pickle.load(f)
-            print(data)  # Debug: inspect loaded data
             return data
     except FileNotFoundError:
         return data

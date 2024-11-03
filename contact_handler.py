@@ -106,7 +106,7 @@ def add_phone(*args):
         name = args[0].strip()
         record = contacts.find(name)
         if record:
-            record.add_phone(get_phone_number)
+            record.add_phone(get_phone_number(None))
             print("Phone was added")
         else:
             print(f"Contact {name} was not found")
