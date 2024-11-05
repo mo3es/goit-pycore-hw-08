@@ -47,12 +47,15 @@ class Record:
         self.birthday = Birthday(value)
 
     def add_phone(self, phone):
-        phone_instance = Phone(phone)
-        if phone not in [p.value for p in self.phones]:
-            self.phones.append(phone_instance)
-            print(f"Inputed phone number {phone} successfully added")
+        if phone is None:
+            print('Incorrect phone number, number was not added')
         else:
-            print(f"Inputed phone number {phone} already exists")
+            phone_instance = Phone(phone)
+            if phone not in [p.value for p in self.phones]:
+                self.phones.append(phone_instance)
+                print(f"Inputed phone number {phone} successfully added")
+            else:
+                print(f"Inputed phone number {phone} already exists")
 
     def del_phone(self, phone):
         for p in self.phones:

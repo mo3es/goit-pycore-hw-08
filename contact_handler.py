@@ -99,7 +99,6 @@ def add_phone(*args):
         record = contacts.find(name)
         if record:
             record.add_phone(phone)
-            print("Phone was added")
         else:
             print(f"Contact {name} was not found")
     elif len(args) == 1:
@@ -180,17 +179,20 @@ def get_phone_number(number: str) -> str:
     while True:
         if number is None:
             number = input("Enter phone number: ")
-        if number is not None:
+        elif number.lower() == 'exit':
+            break
+        else:
             number = re.sub("[^0-9]", "", number.strip())
 
             # Suffix correction
             if len(number) == 12:
                 return "+" + number
-            if len(number) == 11:
+            elif len(number) == 11:
                 return "+3" + number
-            if len(number) == 10:
+            elif len(number) == 10:
                 return "+38" + number
-            return None
+            else:
+                number = None
 
 
 def get_upcoming_birthdays(users: list[dict]) -> list[dict]:
